@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageA.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.transit.min.js"></script>
+</head>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li>
+            <div class="a_background">
+                <div class="a_background_top"></div>
+                <div class="a_background_middle"></div>
+                <div class="a_background_bottom"></div>
+            </div>
+        </li>
+        <li>背景二</li>
+        <li>背景三</li>
+    </ul>
+    <div id="boy" class="character"></div>
+    <button class="button">开始</button>
+</div>
+<script type="text/javascript">
+
+    //开始
+    $('button').click(function () {
+        //10秒钟，走到页面的中间
+        var distX = calculateDist('x',0.5);
+        var distY = calculateDist('y',0.5);
+        walkRun(1000,distX,distY);
+    })
+
+</script>
+<SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+<script type="text/javascript" src="boy.js"></script>
+
+</body>
+</html>

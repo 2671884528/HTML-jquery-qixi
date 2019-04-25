@@ -1,0 +1,51 @@
+.b_background {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: absolute;
+
+    background-image: url('../picture/page2.1.png');
+}
+
+.b_background_preload{
+    background: url("../picture/page2.3.png") no-repeat -9999px -9999px;
+}
+
+.lamp_bright{
+    background-image: url("../picture/page2.3.png");
+}
+
+.shop {
+    width: 39.5%;
+    height: 35.5%;
+    left: 29%;
+    top: 36.5%;
+    position: absolute;
+}
+
+.door{
+    position: absolute;
+    width: 32%;
+    top: 32%;
+    height: 68%;
+    left: 58.5%;
+    overflow: hidden;
+}
+
+.door-left,.door-right{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+
+.door-left{
+    background: url('../picture/door-left.png');
+    left: 0%;
+    background-size: 100% 100%;
+}
+
+.door-right{
+    left: 50%;
+    background: url("../picture/door-right.png");
+    background-size: 100% 100%;
+}

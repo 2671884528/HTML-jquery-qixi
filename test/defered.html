@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <style>
+        div {
+            width: 600px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border: 5px groove darkviolet;
+            margin: 20px auto;
+            color: lightpink;
+            font-size: 30px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<!--通过$.Deferred处理过的代码，很明显没有了回调的嵌套，
+
+虽然代码量看起来多了点，但是实际上，每一个代码执行部分都被封装了起来
+
+，只留了Deferred的接口处理了，等于是我们把执行的流程控制交给了Deferred，
+
+这样的好处就是我们在写嵌套函数的时候，可以用deferred提供的管道风格编写同步代码了-->
+<body>
+<p>
+    <button>回调</button>
+    <button>Deferred</button>
+</p>
+<div>block1执行动画</div>
+<div>block2执行动画</div>
+<div>block3执行动画</div>
+<div>block4执行动画</div>
+
+<script type="text/javascript">
+    $('button:first').click(function () {
+        $('div:first').animate({width: 400}, 3000, function () {
+            $(this).next(':first').animate({width: 400}, 3000)
+        })
+    })
+
+
+    $('button:last').on('click', function () {
+        function animate1() {
+            var dfd = $.Deferred();//第一步:生成Deferred对象
+            $('div:eq(2)').animate({width: 400}, 3000, function () {
+                dfd.resolve();//改变Deferred对象执行状态
+            })
+            return dfd;
+        }
+
+        function animate2() {
+            var dfd = $.Deferred();//第一步:生成Deferred对象
+            $('div:eq(3)').animate({opacity: 0}, 3000, function () {
+                dfd.resolve();//第二步:改变Deferred对象执行状态
+            })
+            return dfd;
+        }
+
+        //第三步:执行then()
+        animate1().then(function () {
+            $('button:last').text('第三个执行完毕');
+            return animate2()
+        }).then(function () {
+            $('button:last').text('第四个执行完毕');
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+</head>
+<body>
+<div>
+    <ul>
+        <p>?</p>
+        <p>?</p>
+        <p>?</p>
+        <p>?</p>
+        <button>改变的值</button>
+    </ul>
+</div>
+<script type="text/javascript">
+    $('button').click(function () {
+        var lis = $('ul').find('p');
+        $.each(lis,function (index) {
+
+            setTimeout(lis.eq(index).text("yixiugai"+index),5000);
+
+        })
+    })
+
+</script>
+</body>
+</html>

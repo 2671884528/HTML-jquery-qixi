@@ -1,0 +1,132 @@
+/*设置所有的margin和padding防止对以后设置干扰*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*去掉表li的前面的原点*/
+li, ul {
+    list-style-type: none;
+}
+
+/*设置总容器*/
+#content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+/*设置ul的属性*/
+.content-wrap {
+    position: relative;
+}
+
+/*设置直属的li属性*/
+.content-wrap > li {
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.content-wrap > li:nth-child(2) {
+    background: yellow;
+}
+
+.content-wrap > li:nth-child(3) {
+    background: darkviolet;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+.button {
+    position: absolute;
+    bottom: 0;
+}
+
+/*小孩的模型*/
+.character {
+    width: 151px;
+    height: 291px;
+    background: url("../picture/boy.png") -0px -291px no-repeat;
+    position: absolute;
+    /*设置元素的坐标*/
+    top: 55%;
+    left: 6%;
+}
+
+/*  定义一个名为person-slow的@keyframes规则，
+
+            @keyframes用百分比来规定变化发生的时间， 0% 是动画的开始
+
+            100% 是动画的完成，规则中有4个百分比值的变化，
+
+            每个比值分别通过position获取一张图片，分别是0%,25%,50%,75%,100%。
+
+            在950毫米内从0%-100%发生4次变化，采用的算法是steps(1, start)一帧一帧的切换，
+
+            通过设置infinite参数每950毫秒不断循环  */
+
+/*执行动画*/
+.slowWalk {
+    /*设置@keyframes动画名字*/
+    -webkit-animation-name: person-slow;
+    /*设置一周期持续时间*/
+    -webkit-animation-duration: 950ms;
+    /*规定动画被播的次数规定是1 infinite(循环次数)*/
+    -webkit-animation-iteration-count: infinite;
+    /*动画切换的方式一帧一帧的改变*/
+    -webkit-animation-timing-function: steps(1, start);
+
+    -moz-animation-name: person-slow;
+    -moz-animation-duration: 950ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: steps(1, start);
+}
+
+/*暂停动画*/
+.paused {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+}
+
+@-webkit-keyframes person-slow {
+    0% {
+        background-position: -0px -291px;
+    }
+    20% {
+        background-position: -602px -0px;
+    }
+    50% {
+        background-position: -302px -291px;
+    }
+    75% {
+        background-position: -151px -291px;
+    }
+    100% {
+        background-position: -0px -291px;
+    }
+}
+
+@-moz-keyframes person-slow {
+    0% {
+        background-position: -0px -291px;
+    }
+    25% {
+        background-position: -602px -0px;
+    }
+    50% {
+        background-position: -302px -291px;
+    }
+    75% {
+        background-position: -151px -291px;
+    }
+    100% {
+        background-position: -0px -291px;
+    }
+}
+
+

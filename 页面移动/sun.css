@@ -1,0 +1,34 @@
+#sun {
+    background: url('../picture/sun.png');
+    position: absolute;
+    height: 201px;
+    width: 201px;
+    z-index: 1;
+    top: -30px;
+    right: 40px;
+}
+
+.rotation {
+    -webkit-animation-name: rotation;
+    -webkit-animation-duration: 30s;
+    -moz-animation-name: rotation;
+    -moz-animation-duration: 30s;
+}
+
+@-webkit-keyframes rotation {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-2000px) translateY(400px);
+    }
+}
+
+@-moz-keyframes rotation {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-2000px) translateY(400px);
+    }
+}

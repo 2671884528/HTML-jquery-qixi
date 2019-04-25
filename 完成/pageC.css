@@ -1,0 +1,407 @@
+/*背景图*/
+.c_background {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: absolute;
+}
+
+.c_top_background {
+    width: 100%;
+    height: 71.6%;
+    background-image: url("../picture/page3top.png");
+    background-size: 100% 100%;
+}
+
+.c_middle_background {
+    width: 100%;
+    height: 13.1%;
+    background-image: url("../picture/page3middle.png");
+    background-size: 100% 100%;
+
+}
+
+.c_bottom_background {
+    width: 100%;
+    height: 15.3%;
+    background-image: url("../picture/page3bottom.png");
+    background-size: 100% 100%;
+}
+
+/*小女孩*/
+.girl {
+    background: url("../picture/girl.png") -755px -0px no-repeat;
+    position: absolute;
+    right: 40%;
+    top: 37%;
+    width: 151px;
+    height: 291px;
+}
+
+/*桥*/
+.bridge_bottom {
+    position: absolute;
+    width: 41%;
+    height: 24%;
+    left: 29.5%;
+    top: 76%;
+    overflow: hidden;
+}
+
+/*水的布局*/
+.water {
+    width: 100%;
+    height: 100%;
+}
+
+/*-webkit-animation-direction: alternate;
+
+normal
+每个循环内动画向前循环，换言之，每个动画循环结束，动画重置到起点重新开始，这是默认属性
+
+alternate
+动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，
+比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代
+
+reverse
+反向运行动画，每周期结束动画由尾到头运行
+
+alternate-reverse
+反向交替， 反向开始交替
+
+动画第一次运行时是反向的，然后下一次是正向，后面依次循环。
+决定奇数次或偶数次的计数从1开始。*/
+.water1, .water2, .water3, .water4 {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 40s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    -moz-animation-name: shake;
+    -moz-animation-duration: 40s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+}
+
+@-webkit-keyframes shake {
+    0%, 100% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-30px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(30px, 0, 0);
+    }
+}
+
+@-moz-keyframes shake {
+    0%, 100% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-30px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(30px, 0, 0);
+    }
+}
+
+.water1 {
+    width: 131px;
+    height: 15px;
+    top: 13%;
+    left: 35%;
+    background: url("../picture/water.png") -261px -0 no-repeat;
+}
+
+.water2 {
+    width: 161px;
+    height: 9px;
+    top: 30%;
+    left: 45%;
+    background: url("../picture/water.png") -693px -0 no-repeat;
+    /*加延迟使得水运动的不规律*/
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+
+.water3 {
+    width: 261px;
+    height: 29px;
+    top: 50%;
+    left: 15%;
+    background: url("../picture/water.png") -0 -0 no-repeat;
+}
+
+.water4 {
+    width: 301px;
+    height: 12px;
+    top: 75%;
+    left: 30%;
+    background: url("../picture/water.png") -392px -0 no-repeat;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+
+
+.stars {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.stars > li {
+    position: absolute;
+    width: 30px;
+    height: 31px;
+    background-image: url("../picture/star.png");
+
+    -webkit-animation-name: flash;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    -moz-animation-name: flash;
+    -moz-animation-timing-function: ease-out;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+}
+
+@-webkit-keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+.stars1 {
+    top: 20%;
+    left: 30%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+
+.stars2 {
+    top: 15%;
+    left: 20%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+}
+
+.stars3 {
+    top: 25%;
+    left: 85%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+
+.stars4 {
+    top: 30%;
+    left: 70%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+}
+
+.stars5 {
+    top: 25%;
+    left: 20%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+}
+
+.stars6 {
+    top: 10%;
+    left: 65%;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+}
+
+/*transition与animation用的很多，这里简单的描述下不同点，
+transition需要事件触发，animation可以直接自动触发，而且功能上更为强大，
+包括可以设置不同时间段的动画规则，还有状态的控制，事件等等。*/
+/*星星与水波动画有个共同的特点不需要手动触发不断的循环变化*/
+/*所以针对这个相同点，最终采用了最简单的animation处理。
+星星来说可以增加一个opacity变化的的关键帧，1到0重复变化就能达到一个闪烁的效果，
+水波可以设定translateX变化的值，可以实现左右晃动的效果。需要注意的是，
+每一个元素的动画执行会有个先后循序，所以需给每一个元素分别
+单独设置animation-delay延时这个属性。*/
+.logo {
+    width: 185px;
+    height: 81px;
+    background-image: url("../picture/muke.png");
+    z-index: 999999;
+    position: absolute;
+    left: 50%;
+    margin-left: -92.5px;
+    top: 30px;
+    display: none;
+}
+
+.logoLightSpeedIn {
+    display: block;
+    -webkit-animation-name: logoSpeedIn;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-out;
+
+    -moz-animation-name: logoSpeedIn;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes logoSpeedIn {
+    0% {
+        /*顺时针偏转30度*/
+        -webkit-transform: translate3d(100%, 0, 0) skew(-30deg);
+        opacity: 0;
+    }
+    60% {
+        -webkit-transform: skew(20deg);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: skew(-5deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: none;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes logoSpeedIn {
+    0% {
+        /*顺时针偏转30度*/
+        -webkit-transform: translate3d(100%, 0, 0) skew(-30deg);
+        opacity: 0;
+    }
+    60% {
+        -webkit-transform: skew(20deg);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: skew(-5deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: none;
+        opacity: 1;
+    }
+}
+
+.logo-shake {
+    -webkit-animation-name: logoShake;
+    -webkit-animation-duration: 0.5s;
+
+    -moz-animation-name: logoShake;
+    -moz-animation-duration: 0.5s;
+}
+
+/*使得图标摇晃*/
+@-webkit-keyframes logoShake {
+    0%, 100% {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate3d(-5px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+    }
+}
+
+@-moz-keyframes logoShake {
+    0%, 100% {
+        -moz-transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -moz-transform: translate3d(-5px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -moz-transform: translate3d(10px, 0, 0);
+    }
+}
+
+/*雪花*/
+.snowflake {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.snowRoll {
+    position: absolute;
+    opacity: 0;
+    height: 80px;
+
+    -webkit-animation-name: mySnow;
+    -webkit-animation-duration: 20s;
+
+    -moz-animation-name: mySnow;
+    -moz-animation-duration: 20s;
+}
+
+@-webkit-keyframes mySnow {
+    0%{
+        bottom: 100%;
+    }
+    50%{
+        -webkit-transform: rotate(1081deg);
+
+    }
+    100%{
+        -webkit-transform: rotate(0deg) translate3d(50px,50px,50px);
+    }
+}
+
+@-moz-keyframes mySnow {
+    0% {
+        bottom: 100%;
+    }
+    50% {
+        -moz-transform: rotate(1081deg);
+
+    }
+    100% {
+        -moz-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+    }
+}

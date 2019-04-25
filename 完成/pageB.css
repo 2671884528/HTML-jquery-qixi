@@ -1,0 +1,169 @@
+.b_background {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    position: absolute;
+
+    background-image: url('../picture/page2.1.png');
+}
+
+.b_background_preload {
+    background: url("../picture/page2.3.png") no-repeat -9999px -9999px;
+}
+
+.lamp-bright {
+    background-image: url("../picture/page2.3.png");
+}
+
+.shop {
+    width: 39.5%;
+    height: 35.5%;
+    left: 29%;
+    top: 36.5%;
+    position: absolute;
+}
+
+.door {
+    position: absolute;
+    width: 32%;
+    top: 32%;
+    height: 68%;
+    left: 58.5%;
+    overflow: hidden;
+}
+
+.door-left, .door-right {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+
+.door-left {
+    background: url('../picture/door-left.png');
+    left: 0%;
+    background-size: 100% 100%;
+}
+
+.door-right {
+    left: 50%;
+    background: url("../picture/door-right.png");
+    background-size: 100% 100%;
+}
+
+/*鸟*/
+.bird {
+    min-width: 91px;
+    min-height: 71px;
+    top: 10%;
+    position: absolute;
+    z-index: 10;
+    right: -91px;
+    background: url('../picture/bird.png') -182px 0 no-repeat;
+}
+
+/*鸟的动画*/
+.birdFly {
+    -webkit-animation-name: bird-slow;
+    -webkit-animation-duration: 400ms;
+    /*图片变化部分采用的是CSS3的animation，
+    通过设置animation-timing-function: step-start;
+    马上跳到动画每一帧结束的状态，这样就让动画执行一帧一帧的切换效果*/
+    -webkit-animation-timing-function: step-start;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: bird-slow;
+    -moz-animation-duration: 400ms;
+    -moz-animation-timing-function: step-start;
+    -moz-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bird-slow {
+    0% {
+        background-position: -182px 0;
+    }
+    50% {
+        background-position: 0px 0;
+    }
+    75% {
+        background-position: -91px 0;
+    }
+    100% {
+        background-position: -182px 0;
+    }
+}
+
+@-moz-keyframes bird-slow {
+    0% {
+        background-position: -182px 0;
+    }
+    50% {
+        background-position: 0px 0;
+    }
+    75% {
+        background-position: -91px 0;
+    }
+    100% {
+        background-position: -182px 0;
+    }
+}
+
+.girl-rotate {
+    -webkit-animation-name: girl-rotate;
+    -webkit-animation-timing-function: step-start;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 850ms;
+    -webkit-animation-fill-mode: forwards;
+
+    -moz-animation-name: girl-rotate;
+    -moz-animation-timing-function: step-start;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-duration: 850ms;
+    -moz-animation-fill-mode: forwards;
+}
+@-webkit-keyframes girl-rotate {
+    0% {
+        background-position: -604px -0px;
+    }
+    16.7% {
+        background-position: -151px -0px;
+    }
+    33.4% {
+        background-position: -906px -0px;
+    }
+    50.1% {
+        background-position: -0px -0px;
+    }
+    66.8% {
+        background-position: -302px -0px;
+    }
+    83.5% {
+        background-position: -453px -0px;
+    }
+    100% {
+        background-position: -604px -0px;
+    }
+}
+
+@-moz-keyframes girl-rotate {
+    0% {
+        /*background-position: -604px -0px;*/
+    }
+    16.7% {
+        background-position: -151px -0px;
+    }
+    33.4% {
+        background-position: -906px -0px;
+    }
+    50.1% {
+        background-position: -0px -0px;
+    }
+    66.8% {
+        background-position: -302px -0px;
+    }
+    83.5% {
+        background-position: -453px -0px;
+    }
+    100% {
+        background-position: -604px -0px;
+    }
+}

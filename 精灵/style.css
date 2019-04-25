@@ -1,0 +1,40 @@
+/*设置所有的margin和padding防止对以后设置干扰*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*去掉表li的前面的原点*/
+li, ul {
+    list-style-type: none;
+}
+
+/*设置总容器*/
+#content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+/*设置ul的属性*/
+.content-wrap {
+    position: relative;
+}
+
+/*设置直属的li属性*/
+.content-wrap > li {
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+button{
+    width: 100px;
+    height: 50px;
+}
+.button{
+    position: absolute;
+    bottom: 0;
+}
+
+

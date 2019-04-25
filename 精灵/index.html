@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageA.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <style>
+        /*小孩的模型*/
+        .character {
+            width: 151px;
+            height: 291px;
+            background: url("../picture/boy.png") -0px -291px no-repeat;
+            position: absolute;
+            /*设置元素的坐标*/
+            top: 55%;
+            left: 6%;
+        }
+
+        /*  定义一个名为person-slow的@keyframes规则，
+
+            @keyframes用百分比来规定变化发生的时间， 0% 是动画的开始
+
+            100% 是动画的完成，规则中有4个百分比值的变化，
+
+            每个比值分别通过position获取一张图片，分别是0%,25%,50%,75%,100%。
+
+            在950毫米内从0%-100%发生4次变化，采用的算法是steps(1, start)一帧一帧的切换，
+
+            通过设置infinite参数每950毫秒不断循环  */
+
+        .slowWalk {
+            /*设置@keyframes动画名字*/
+            -webkit-animation-name: person-slow;
+            /*设置一周期持续时间*/
+            -webkit-animation-duration: 950ms;
+            /*规定动画被播的次数规定是1 infinite(循环次数)*/
+            -webkit-animation-iteration-count: infinite;
+            /*动画切换的方式一帧一帧的改变*/
+            -webkit-animation-timing-function: steps(1, start);
+
+            /*-moz-animation-name: person-slow;*/
+            /*-moz-animation-duration: 950ms;*/
+            /*-moz-animation-iteration-count: infinite;*/
+            /*-moz-animation-timing-function: steps(1, start);*/
+        }
+
+        .paused {
+            -webkit-animation-play-state: paused;
+        }
+
+        @-webkit-keyframes person-slow {
+            0% {
+                background-position: -0px -291px;
+            }
+            20% {
+                background-position: -602px -0px;
+            }
+            50% {
+                background-position: -302px -291px;
+            }
+            75% {
+                background-position: -151px -291px;
+            }
+            100% {
+                background-position: -0px -291px;
+            }
+        }
+
+        /*@-moz-keyframes person-slow {*/
+            /*0% {*/
+                /*background-position: -0px -291px;*/
+            /*}*/
+            /*25% {*/
+                /*background-position: -602px -0px;*/
+            /*}*/
+            /*50% {*/
+                /*background-position: -302px -291px;*/
+            /*}*/
+            /*75% {*/
+                /*background-position: -151px -291px;*/
+            /*}*/
+            /*100% {*/
+                /*background-position: -0px -291px;*/
+            /*}*/
+        /*}*/
+
+    </style>
+    <SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+</head>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li>
+            <div class="a_background">
+                <div class="a_background_top"></div>
+                <div class="a_background_middle"></div>
+                <div class="a_background_bottom"></div>
+            </div>
+        </li>
+        <li>背景二</li>
+        <li>背景三</li>
+    </ul>
+    <button class="button">精灵移动</button>
+    <div id="boy" class="character"></div>
+</div>
+<script type="text/javascript">
+    var swipe = Swipe($('#content'));
+    //获取数据
+    var getValue = function (className) {
+        var $elem = $('.' + className + '');
+        //走路的坐标position() 方法返回匹配元素相对于父元素的位置（偏移）。
+
+        // 该方法返回的对象包含两个整型属性：top 和 left，以像素计。
+        return {
+            height: $elem.height(),
+            top: $elem.position().top
+        }
+    }
+
+    //路的Y轴
+    var pathY = function () {
+        var data = getValue('a_background_middle');
+        return data.top + data.height / 2;
+    }();
+
+    var $boy = $('#boy');
+    var boyHeight = $boy.height();
+
+    // 修正小男孩的位置
+    $boy.css('top', pathY - boyHeight + 25
+    );
+
+    //设置精灵
+    var isGo = false;
+    $('button').click(function () {
+        if (isGo == false) {
+            $boy.removeClass('paused')
+            $boy.addClass('slowWalk');
+            isGo = !isGo;
+            $('button').text("精灵暂停");
+        } else {
+            $boy.addClass('paused');
+            isGo = !isGo;
+            $('button').text("精灵移动")
+        }
+    })
+</script>
+
+</body>
+</html>

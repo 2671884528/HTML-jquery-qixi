@@ -1,0 +1,77 @@
+.cloud {
+    z-index: 2;
+    position: absolute;
+}
+
+.cloud1 {
+    background: url("../picture/cloud1.png");
+    width: 181px;
+    height: 101px;
+    left: -5%;
+    top: 15%;
+}
+
+.cloud2 {
+    background: url("../picture/cloud2.png");
+    width: 301px;
+    height: 140px;
+    right: -5%;
+    top: 15%;
+}
+
+.cloud1Anim {
+    -webkit-animation-name: smallCloud;
+    -webkit-animation-duration: 30s;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: smallCloud;
+    -moz-animation-duration: 30s;
+    -moz-animation-iteration-count: infinite;
+}
+
+
+@-webkit-keyframes smallCloud {
+    0% {
+        left: -5%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@-moz-keyframes smallCloud {
+    0% {
+        left: -5%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.cloud2Anim {
+    -webkit-animation-name: bigCloud;
+    -webkit-animation-duration: 60s;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: bigCloud;
+    -moz-animation-duration: 60s;
+    -moz-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes bigCloud {
+    0% {
+        right: -5%;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+@-webkit-keyframes bigCloud {
+    0% {
+        right: -5%;
+    }
+    100% {
+        right: 100%;
+    }
+}

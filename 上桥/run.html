@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageA.css">
+    <link rel="stylesheet" href="pageB.css">
+    <link rel="stylesheet" href="pageC.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.transit.min.js"></script>
+    <SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+    <script type="text/javascript" src="boy.js"></script>
+
+    <audio autoplay="autoplay" hidden="hidden" controls="controls" loop="1" class="music1" preload="metadata"
+           src="../voice/2.mp3">
+    </audio>
+
+    <audio hidden="hidden" controls="controls" class="music2" loop="1" preload="metadata"
+           src="../voice/1.mp3">
+    </audio>
+
+    <audio hidden="hidden" controls="controls" class="music3" loop="loop" preload="metadata"
+           src="../voice/3.mp3">
+    </audio>
+
+</head>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li>
+            <div class="a_background">
+                <div class="a_background_top"></div>
+                <div class="a_background_middle"></div>
+                <div class="a_background_bottom"></div>
+            </div>
+            <div id="sun"></div>
+            <div class="cloudAre">
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+            </div>
+        </li>
+        <!--稍微注意下的就是商店的灯的亮度切换采用的是切换背景图片，
+
+        背景图如果是没有预加载的话就有一个闪屏的问题，所以特意做了
+
+        一个b_background_preload的节点让图片先加载，设置一个坐标不可见-->
+        <li>
+            <div class="b_background"></div>
+            <div class="b_background_preload"></div>
+
+            <!--商店-->
+            <div class="shop">
+                <div class="door">
+                    <div class="door-left"></div>
+                    <div class="door-right"></div>
+                </div>
+                <!--灯-->
+                <div class="lamp"></div>
+            </div>
+            <!--鸟-->
+            <div class="bird"></div>
+        </li>
+        <li>
+            <!--背景-->
+            <div class="c_background">
+                <div class="c_top_background"></div>
+                <div class="c_middle_background"></div>
+                <div class="c_bottom_background"></div>
+            </div>
+            <!--女孩-->
+            <div class="girl"></div>
+            <!--桥下的水-->
+            <div class="bridge_bottom">
+                <div class="water">
+                    <div class="water1"></div>
+                    <div class="water2"></div>
+                    <div class="water3"></div>
+                    <div class="water4"></div>
+                </div>
+            </div>
+            <!--星星-->
+            <div>
+                <ul class="stars">
+                    <li class="stars1"></li>
+                    <li class="stars2"></li>
+                    <li class="stars3"></li>
+                    <li class="stars4"></li>
+                    <li class="stars5"></li>
+                    <li class="stars6"></li>
+                </ul>
+            </div>
+            <!--logo图-->
+            <div class="logo"></div>
+        </li>
+    </ul>
+    <!--雪花-->
+    <div class="snowflake"></div>
+    <div id="boy" class="character"></div>
+</div>
+<script type="text/javascript">
+
+    var content = $('#content');
+    var swipe = Swipe(content);
+    var boy = boyWork();
+    var $boy = $('#boy');
+    // boy.get('lamp');
+
+
+    //页面滚动到指定的位置
+    function scrollTo(time, proportionX) {
+        var distX = content.width() * proportionX;
+        swipe.scrollTo(distX, time)
+    }
+
+    var $music1 = document.getElementsByClassName('music1')[0];
+    var $music2 = document.getElementsByClassName('music2')[0];
+    var $music3 = document.getElementsByClassName('music3')[0];
+    $music1.volume = 0.2;
+    $music2.volume = 0.2;
+    $music3.volume = 0.2;
+    //背景和人移动
+    setTimeout(function () {
+        boy.walkTo(2000, 0.2).then(function () {
+            $music1.play();
+            return scrollTo(10000, 1);
+        }).then(function () {
+            return boy.walkTo(10000, 0.5);
+        }).then(function () {
+            $music1.pause()
+            $music2.play();
+        }).then(function () {
+            boy.walkStop()
+        }).then(function () {
+            return boy.open()
+        }).then(function () {
+            window.lamp.bright();
+        }).then(function () {
+            return boy.toShop(200)
+        }).then(function () {
+            window.bird.fly();
+        }).then(function () {
+            return boy.takeFlower();
+        }).then(function () {
+            return boy.outShop(200)
+        }).then(function () {
+            return boy.close();
+        }).then(function () {
+            window.lamp.dark();
+        }).then(function () {
+            return scrollTo(10000, 2)
+        }).then(function () {
+            return boy.walkTo(10000, 0.15);
+        }).then(function () {
+            return boy.walkTo(1500, 0.25, (bridgeY - girl.getHeight()) / visualHeight)
+        }).then(function () {
+            $music2.pause();
+            $music3.play();
+        }).then(function () {
+            var proportionX = (girl.elem.position().left - $boy.width() + girl.elem.width() / 5) / visualWidth;
+            return boy.walkTo(2000, proportionX)
+        }).then(function () {
+            boy.resetOriginal();
+        }).then(function () {
+            setTimeout(function () {
+                girl.rotate();
+                boy.rotate(function () {
+                    logo.run();
+                });
+            }, 1000)
+        }).then(function () {
+            boy.snow()
+        })
+    }, 2000)
+</script>
+</body>
+</html>

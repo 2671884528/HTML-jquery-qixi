@@ -1,0 +1,52 @@
+/*设置所有的margin和padding防止对以后设置干扰*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*去掉表li的前面的原点*/
+li, ul {
+    list-style-type: none;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+}
+
+.button {
+    position: absolute;
+    bottom: 0;
+}
+
+/*设置总容器*/
+#content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+/*设置ul的属性*/
+.content-wrap {
+    position: relative;
+}
+
+/*设置直属的li属性*/
+.content-wrap > li {
+    overflow: hidden;
+    position: relative;
+    background: darkviolet;
+    float: left;
+}
+
+/*第二个图片的颜色*/
+.content-wrap > li:nth-child(2) {
+    background: lightpink;
+}
+
+/*第三个图片颜色*/
+.content-wrap > li:nth-child(3) {
+    background: cyan;
+}
+

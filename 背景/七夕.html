@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+</head>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div>
+        <button class="button">
+            切换页面
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+    var swipe = Swipe($('#content'));
+    $('button').on('click',function () {
+        swipe.scrollTo($("#content").width(), 5000);
+    })
+</script>
+</body>
+</html>

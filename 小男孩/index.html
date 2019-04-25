@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageA.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+</head>
+<style>
+    /*小孩的模型*/
+    .character {
+        width: 151px;
+        height: 291px;
+        background: url(http://img.mukewang.com/55ade248000198ae10550582.png) -0px -291px no-repeat;
+        position: absolute;
+        /*设置元素的坐标*/
+        top: 55%;
+        left: 6%;
+    }
+</style>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li>
+            <div class="a_background">
+                <div class="a_background_top"></div>
+                <div class="a_background_middle"></div>
+                <div class="a_background_bottom"></div>
+            </div>
+        </li>
+        <li>背景二</li>
+        <li>背景三</li>
+    </ul>
+    <div id="boy" class="character"></div>
+</div>
+<script type="text/javascript">
+    var swipe = Swipe($('#content'));
+    //获取数据
+    var getValue = function (className) {
+        var $elem = $('.' + className + '');
+        //走路的坐标position() 方法返回匹配元素相对于父元素的位置（偏移）。
+
+        // 该方法返回的对象包含两个整型属性：top 和 left，以像素计。
+        return{
+            height : $elem.height(),
+            top : $elem.position().top
+        }
+    }
+
+    //路的Y轴
+    var pathY = function () {
+        var data = getValue('a_background_middle');
+        return data.top + data.height/2;
+    }();
+
+    var $boy = $('#boy');
+    var boyHeight = $boy.height();
+
+    // 修正小男孩的位置
+    $boy.css('top',pathY-boyHeight+25
+    );
+</script>
+
+</body>
+</html>

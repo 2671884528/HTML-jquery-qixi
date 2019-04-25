@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>七夕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pageA.css">
+    <link rel="stylesheet" href="pageB.css">
+    <link rel="stylesheet" href="pageC.css">
+    <script type="text/javascript" src="../jQuery/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.transit.min.js"></script>
+    <SCRIPT type="text/javascript" src="Swipe.js"></SCRIPT>
+    <script type="text/javascript" src="boy.js"></script>
+
+
+</head>
+<body>
+<div id="content">
+    <ul class="content-wrap">
+        <li>
+            <div class="a_background">
+                <div class="a_background_top"></div>
+                <div class="a_background_middle"></div>
+                <div class="a_background_bottom"></div>
+            </div>
+            <div id="sun"></div>
+            <div class="cloudAre">
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+            </div>
+        </li>
+        <!--稍微注意下的就是商店的灯的亮度切换采用的是切换背景图片，
+
+        背景图如果是没有预加载的话就有一个闪屏的问题，所以特意做了
+
+        一个b_background_preload的节点让图片先加载，设置一个坐标不可见-->
+        <li>
+            <div class="b_background"></div>
+            <div class="b_background_preload"></div>
+
+            <!--商店-->
+            <div class="shop">
+                <div class="door">
+                    <div class="door-left"></div>
+                    <div class="door-right"></div>
+                </div>
+                <!--灯-->
+                <div class="lamp"></div>
+            </div>
+            <!--鸟-->
+            <div class="bird"></div>
+        </li>
+        <li>
+            <!--背景-->
+            <div class="c_background">
+                <div class="c_top_background"></div>
+                <div class="c_middle_background"></div>
+                <div class="c_bottom_background"></div>
+            </div>
+            <!--女孩-->
+            <div class="girl"></div>
+            <!--桥下的水-->
+            <div class="bridge_bottom">
+                <div class="water">
+                    <div class="water1"></div>
+                    <div class="water2"></div>
+                    <div class="water3"></div>
+                    <div class="water4"></div>
+                </div>
+            </div>
+            <!--星星-->
+            <div>
+                <ul class="stars">
+                    <li class="stars1"></li>
+                    <li class="stars2"></li>
+                    <li class="stars3"></li>
+                    <li class="stars4"></li>
+                    <li class="stars5"></li>
+                    <li class="stars6"></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <div id="boy" class="character"></div>
+    <button class="button">开始</button>
+</div>
+<script type="text/javascript">
+
+    var content = $('#content');
+    var swipe = Swipe(content);
+    var boy = boyWork();
+
+
+    //页面滚动到指定的位置
+    function scrollTo(time, proportionX) {
+        var distX = content.width() * proportionX;
+        swipe.scrollTo(distX, time)
+    }
+
+    //开门关门事件
+    function doorAction(left, right, time) {
+        var $door = $('.door');
+        var doorLeft = $('.door-left');
+        var doorRight = $('.door-right');
+        var defer = $.Deferred();
+        var count = 2;
+
+        //等待开门
+        var compete = function () {
+            if (count == 1) {
+                defer.resolve();
+                return;
+            }
+            count--;
+        };
+        doorLeft.transition({'left': left}, time, compete);
+        doorRight.transition({'left': right}, time, compete);
+        return defer;
+    }
+
+    //开门
+    function openDoor() {
+        return doorAction('-50%', '100%', 2000)
+    }
+
+    //关门
+    function closeDoor() {
+        return doorAction('0%', '50%', 2000)
+    }
+
+    //灯动画
+    var lamp = {
+        elem: $('.b_background'),
+        bright: function () {
+            this.elem.addClass('lamp-bright')
+        }, dark: function () {
+            this.elem.removeClass('lamp-bright')
+        }
+    };
+
+    //鸟动画
+    var bird = {
+        elem: $('.bird'),
+        fly: function () {
+            this.elem.addClass('birdFly');
+            this.elem.transition({
+                right: content.width()
+            }, 15000, 'linear')
+        }
+    }
+    //太阳转动
+    $("#sun").addClass('rotation');
+
+    //云移动
+    $('.cloud1').addClass('cloud1Anim');
+    $('.cloud2').addClass('cloud2Anim');
+
+    //button监听事件
+    $('button').click(function () {
+        //背景和人移动
+        boy.walkTo(2000, 0.2).then(function () {
+            return scrollTo(10000, 1);
+        }).then(function () {
+            return boy.walkTo(10000, 0.5)
+        }).then(function () {
+            boy.walkStop()
+        }).then(function () {
+            return openDoor();
+        }).then(function () {
+            lamp.bright();
+        }).then(function () {
+            return boy.toShop(2000)
+        }).then(function () {
+            bird.fly();
+        }).then(function () {
+            return boy.takeFlower();
+        }).then(function () {
+            return boy.outShop(2000)
+        }).then(function () {
+            return closeDoor();
+        }).then(function () {
+            lamp.dark();
+        }).then(function () {
+            return scrollTo(10000, 2)
+        });
+    });
+</script>
+</body>
+</html>
